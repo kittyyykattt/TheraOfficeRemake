@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.TheraOffice.Views.PatientsPage"
+             Title="Patients">
+
+    <VerticalStackLayout Padding="20" Spacing="12">
+
+        <Label Text="Patients" FontSize="24" />
+
+        <!-- List existing patients -->
+        <CollectionView x:Name="PatientsList"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Patients}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding LastName}" FontAttributes="Bold" />
+                        <Label Grid.Column="1"
+                               Text="{Binding FirstName}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label Text="Edit / Add Patient" FontAttributes="Bold" />
+
+        <Entry Placeholder="First name" Text="{Binding FirstName}" />
+        <Entry Placeholder="Last name" Text="{Binding LastName}" />
+        <Entry Placeholder="Address" Text="{Binding Address}" />
+
+        <!-- simple date picker -->
+        <DatePicker Date="{Binding BirthDate}" />
+
+        <!-- Race / Gender as pickers -->
+        <Picker Title="Gender" ItemsSource="{Binding Genders}" SelectedItem="{Binding SelectedGender}" />
+        <Picker Title="Race"   ItemsSource="{Binding Races}"   SelectedItem="{Binding SelectedRace}" />
+
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Add"    Command="{Binding AddCommand}" />
+            <Button Text="Update" Command="{Binding UpdateCommand}" />
+            <Button Text="Delete" Command="{Binding DeleteCommand}" />
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

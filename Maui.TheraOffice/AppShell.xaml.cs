@@ -1,10 +1,9 @@
-﻿namespace Maui.TheraOffice
+﻿namespace Maui.TheraOffice;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }
